@@ -15,37 +15,38 @@ if (mnemonicFileName != null && fs.existsSync(mnemonicFileName)) {
 
 const infuraUrl = (name: string): string => `https://${name}.infura.io/v3/${process.env.INFURA_ID}`
 
-function getNetwork (url: string): NetworkUserConfig {
+function getNetwork(url: string): NetworkUserConfig {
   return {
     url,
     accounts: {
-      mnemonic
-    }
+      mnemonic,
+    },
   }
 }
 
-function getInfuraNetwork (name: string): NetworkUserConfig {
+function getInfuraNetwork(name: string): NetworkUserConfig {
   return getNetwork(infuraUrl(name))
 }
 
 const config: HardhatUserConfig = {
   typechain: {
     outDir: 'src/types',
-    target: 'ethers-v5'
+    target: 'ethers-v5',
   },
   networks: {
     localhost: {
       url: 'http://localhost:8545/',
-      saveDeployments: false
+      saveDeployments: false,
     },
-    goerli: getInfuraNetwork('goerli')
+    goerli: getInfuraNetwork('goerli'),
+    mumbai: getInfuraNetwork('polygon-mumbai'),
   },
   solidity: {
     version: '0.8.15',
     settings: {
-      optimizer: { enabled: true }
-    }
-  }
+      optimizer: { enabled: true },
+    },
+  },
 }
 
 export default config
