@@ -1,6 +1,8 @@
 import '@nomiclabs/hardhat-ethers'
 import '@nomicfoundation/hardhat-toolbox'
 import 'hardhat-deploy'
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 import fs from 'fs'
 
