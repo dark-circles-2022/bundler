@@ -12,6 +12,7 @@ let mnemonic = 'test '.repeat(11) + 'junk'
 if (mnemonicFileName != null && fs.existsSync(mnemonicFileName)) {
   mnemonic = fs.readFileSync(mnemonicFileName, 'ascii').trim()
 }
+console.log('Infura ID :', process.env.INFURA_ID)
 
 const infuraUrl = (name: string): string => `https://${name}.infura.io/v3/${process.env.INFURA_ID}`
 
